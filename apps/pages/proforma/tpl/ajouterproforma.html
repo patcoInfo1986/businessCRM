@@ -1,0 +1,80 @@
+<div id="page-wrapper" >
+				<div class="graphs">
+					<h3 class="blank1">{{proforma}}  <a href="#ajouterproduit">
+                        <button class="btn btn-success btn-xs pull-right"><i class="icon-plus-sign icon-white"></i>{{add}}</button>
+                    </a></h3>
+                    
+                    
+                    <div class="tab-content" ng-hide="onmevoit2">
+						<div class="tab-pane active" id="horizontal-form">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">Client</label>
+									<div class="col-sm-8">
+										<select name="selector1" id="selector1" class="form-control1" ng-model="proformaimput.id_client">
+                                                    <option ng-repeat="client in clients"  value="{{ client.id_client}}">{{client.designation}}</option>
+									
+							
+									</select>
+									</div>
+									
+								</div>
+                                
+                                <div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">Banque</label>
+									<div class="col-sm-8">
+										<select name="selector1" id="selector1" class="form-control1" ng-model="proformaimput.id_banque">
+                                                    <option ng-repeat="banque in banques"  value="{{ client.id_banque}}">{{banque.libelle}}</option>
+									
+							
+									</select>
+									</div>
+									
+								</div>
+                                
+								<div class="form-group">
+									<label for="disabledinput" class="col-sm-2 control-label">Date</label>
+									<div class="col-sm-8">
+										<input  type="date" class="form-control1" id="focusedinput"  ng-model="proformaimput.date_facture">
+									</div>
+								</div>
+                                
+								<div class="form-group">
+									<label for="disabledinput" class="col-sm-2 control-label">Reference</label>
+									<div class="col-sm-8">
+										<input  type="text" class="form-control1" id="focusedinput" placeholder="C0005/2016" ng-model="proformaimput.reference">
+									</div>
+								</div>
+								
+                                
+                                      
+                                <div class="form-group">
+									<label for="disabledinput" class="col-sm-2 control-label">Libelle</label>
+									<div class="col-sm-8">
+										<textarea name="" cols="" rows="" ng-model="proformaimput.lib_facture"></textarea>
+                                        	<input  type="hidden" class="form-control1" id="focusedinput" placeholder="010101" ng-model="proformaimput.id_urilisateur" value="1">
+                                        
+									</div>
+								</div>
+						
+                                
+                             
+                             
+	
+				
+						
+						  <div class="panel-footer">
+							<div class="row">
+								<div class="col-sm-8 col-sm-offset-2">
+									<button class="btn-success btn" ng-click="ajouterProforma()">Enregistrer</button>
+                                    <a href="#produit"><button class="btn-default btn" ng-click="annulerAjouterProforma()">Annuler</button></a>
+
+								</div>
+							</div>
+						 </div>
+						</form>
+					  </div>
+				</div>
+                    
+					
+			</div>

@@ -1,0 +1,98 @@
+BusinessCRM
+
+
+- Formater le design HTML
+
+- Dynamiser la BDD
+  exercice ( id_exercice - annee )  facture (..... - id_exercice , id_utilisateur, id_banque)
+banque (id_banque , libelle_banque, Numero de compte )
+ code_syscoa ( 
+    client( etat (prospect ou client) - Ville - BP- Pays- domaine d'activite - email - site web - forme juridique - monnaie - categorie client - type (société ou particulier ))
+   categorie_client
+    pays - ville - domaine d'activité - forme juridique - monnaie
+   taxe ( tva - bnc ...)
+
+produit ( ...  type (produit ou service))
+
+categorie_produit
+
+
+
+
+langue ( id_langue, mot1,mot2 ...) 
+
+utilisateur (... , id_langue - date_cloture )
+
+- Gestion des modules
+    I- Clients
+        
+        ** prospects / clients
+        ** Ajouter - Liste - Modifier - Supprimer - Rechercher
+                -- Action liées : Les factures - CA 
+
+   II- Categorie Client
+         ** Ajoute ** Ajouter - Liste - Modifier - Supprimer - Rechercher 
+                -- Action liées : Les factures - CA 
+
+  III - Produits/ Services
+
+       Produits 
+           ** Ajoute ** Ajouter - Liste - Modifier - Supprimer - Rechercher 
+                -- Action liées : Approvisonner - Etat de mouvement de stock 
+
+       Services 
+           ** Ajoute ** Ajouter - Liste - Modifier - Supprimer - Rechercher 
+        
+      Categorie 
+           ** Ajoute ** Ajouter - Liste - Modifier - Supprimer - Rechercher 
+      Statistique 
+         ** des 10 meilleurs produits ou service par CA
+  
+  IV -  Configuration
+       Banque 
+       Exercice 
+      Langue
+       Pays
+       Ville
+       Monnaie
+     
+V- Facturation , exporter la facture en PDF
+
+
+Taf 
+
+Client // Ajouter -liste Modifier - supprimer
+  
+
+Prospect // Ajouter -liste Modifier - supprimer
+
+Reste a faire Groupe Client
+
+Produit/service
+
+// Ajouter -liste Modifier - supprimer
+Reste à faire : Categorie des articles
+
+Facture
+
+
+
+Reste à faire
+// gerer les actions -- service ( Action éffectue avec succes)
+// Champ Appartient A un groupe -- pour Client et Prospect // utiliser la jointure de table
+
+Pbl //
+
+redynamiser les cookies  et stocker le id_user, id_compagnie, id_exercice
+
+ 
+
+
+*****VERSION 2
+
+
+entreprot (id_entrepot - libelle )
+
+mvt_stock_entree (id_mvt_stock - id_entrepot -  id_produit- qte - date_approv)
+
+mvt_stock_sortie (id_mvt_stock - id_entrepot -  id_produit -id_facture - qte - date_approv)

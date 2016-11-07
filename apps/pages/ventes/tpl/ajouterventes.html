@@ -1,0 +1,101 @@
+<div class="span9" id="content">
+                      <!-- morris stacked chart -->
+                <div class="row-fluid">
+
+                    <form class="form-horizontal" >
+                        <!-- block -->
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">Ajouter une Facture</div>
+                            </div>
+                            <div class="block-content collapse in">
+                                               
+                                <h2>FACTURE N° <input type="varchar" name="" placeholder="Numéro de la Facture"></h2>
+                            </div>
+                                
+                            <p> <input type="date" name="" placeholder="Date de la Facture"></p>
+                           
+                            <div class="panel panel-success pull-right">
+                            <div class="panel-heading">
+                                <h3>CLIENT:</h3>
+                            </div>
+                             <div class="panel-body">
+                                 <p><label for="nom_client">Mr / Mme:</label>
+                                    <input type="text" name="nomclient" ng-model="nom_client">
+                                 </p>
+                             </div>
+                            </div>
+                            <table class="table table-bordered table-condensed table-stripped" >
+                                <thead>
+                                   <tr>
+                                        <th>Libellé Article</th>
+                                        <th>Quantité</th>
+                                        <th>Prix Unitaire</th>
+                                        <th>Montant HT</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                        <tr ng-repeat="article in articles">
+                                            <td>Tomate</td>
+                                            <td>25</td>
+                                            <td>100</td>
+                                            <td>2500</td>
+                                        </tr>
+                                        <tr ng-hide="">
+                                            <td> <input type="text" name="" ng-model="lib_article"></td>
+                                            <td> <input type="int" name="" ng-model="prix_unitaire"></td>  
+                                            <td> <input type="int" name="" ng-model="quantite"></td>  
+                                            <td> <input type="" name="" value="0" ng-model="prix_unitaire*quantite" ></td> 
+                                        </tr>
+                                        
+                                </tbody>
+                            </table> <br>
+                                    
+                            <button  class="btn btn-success btn-xs-success" ng-click ="ajouter()" ng-show="btnarticle">Ajouter Article</button><br>
+                            <div class="row-fluid">
+                                <div class="block-content collapse in pull-right">
+          
+                                    <div class="control-group">
+                                      <label class="control-label" for="ht">MONTANT TOTAL HT:</label>
+                                      <div class="controls">
+                                        <input class="input-xlarge focused" id="ht" ng-model="ht" value="" >
+                                      </div>
+                                    </div>
+                                    <div class="control-group">
+                                      <label class="control-label" for="tva">TVA:</label>
+                                      <div class="controls">
+                                        <input class="input-xlarge focused" id="tva" ng-model="tva" type="float" value="" >
+                                      </div>
+                                    </div>
+                                    
+                                    <div class="control-group">
+                                      <label class="control-label" for="rabais">RABAIS:</label>
+                                      <div class="controls">
+                                        <input class="input-xlarge focused" id="rabais" ng-model="rabais" type="float" value="" >
+                                      </div>
+                                    </div>
+                                    
+                                   
+                                   <div class="control-group">
+                                      <label class="control-label" for="ttc"> MONTANT TOTAL TTC:</label>
+                                      <div class="controls">
+                                        <input class="input-xlarge focused" id="ttc" ng-model="ttc" type="float" value="" >
+                                      </div>
+                                    </div>
+                                    
+                                    <div class="form-actions">
+                                        <a href="clients.html"><button class="btn btn-primary btn-lg"><i class="icon-arrow-left icon-white"></i> Retour</button></a>
+                                        <button type="reset" class="btn btn-warning btn-lg"><i class="icon-refresh icon-white"></i> Annuler</button>
+                                        <button type="submit" class="btn btn-primary btn-lg">Enregistrer</button>
+                                    
+
+                                            </div>
+
+                                      </div>  
+                             </div>          
+                         </div>              
+                     </form>
+
+                 </div>
+                       
+             </div>

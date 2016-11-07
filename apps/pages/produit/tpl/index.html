@@ -1,0 +1,103 @@
+
+
+<div id="page-wrapper" >
+				<div class="graphs">
+					<h3 class="blank1">{{product}}  <a href="#ajouterproduit">
+                        <button class="btn btn-success btn-xs pull-right" ng-hide="!onmevoit"><i class="icon-plus-sign icon-white"></i>{{add}}</button>
+                    </a></h3>
+                    
+                    
+                    <div class="tab-content" ng-hide="onmevoit">
+						<div class="tab-pane active" id="horizontal-form">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">Libelle</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control1" id="focusedinput" placeholder="Libelle" ng-model="tout.libelle">
+									</div>
+									
+								</div>
+								<div class="form-group">
+									<label for="disabledinput" class="col-sm-2 control-label">Prix Unitaire</label>
+									<div class="col-sm-8">
+										<input  type="text" class="form-control1" id="focusedinput" placeholder="Téléphone" ng-model="tout.prix_unitaire">
+									</div>
+								</div>
+								
+                                
+                                      
+                                <div class="form-group">
+									<label for="disabledinput" class="col-sm-2 control-label">Code SYSCOA</label>
+									<div class="col-sm-8">
+										<input  type="text" class="form-control1" id="focusedinput" placeholder="010101" ng-model="tout.code_syscoa">
+                                        	<input  type="hidden" class="form-control1" id="focusedinput" placeholder="010101" ng-model="tout.id_article">
+                                        
+									</div>
+								</div>
+						
+                                
+                                <div class="form-group">
+									<label for="selector1" class="col-sm-2 control-label">Catégorie</label>
+									<div class="col-sm-8"><select name="selector1" id="selector1" class="form-control1" ng-model="tout.id_categorie">
+                                                    <option ng-repeat="categorie in categories" ng-selected="tout.id_categorie == categorie.id_categorie" value="{{ categorie.id_categorie}}">{{categorie.libelle}}</option>
+									
+							
+									</select></div>
+								</div>
+                                
+                                 
+                                <div class="form-group">
+									<label for="selector1" class="col-sm-2 control-label">TVA</label>
+									<div class="col-sm-8"><select name="selector1" id="selector1" class="form-control1" ng-model="tout.id_tva">
+                                                    <option ng-repeat="tva in tvas" ng-selected="tout.id_groupe == tva.id_tva" value="{{ tva.id_tva }}">{{tva.pourcentage}} %</option>
+									
+							
+									</select></div>
+								</div>
+	
+					
+					
+						
+						  <div class="panel-footer">
+							<div class="row">
+								<div class="col-sm-8 col-sm-offset-2">
+									<button class="btn-success btn" ng-click="sauvegarderModifProduit()">Enregistrer</button>
+                                    <a href="#produit"><button class="btn-default btn" ng-click="annulerModifProduit()">Annuler</button></a>
+
+								</div>
+							</div>
+						 </div>
+						</form>
+					  </div>
+				</div>
+                    
+					 <div class="xs tabls" ng-hide="!onmevoit">
+						<div class="bs-example4" data-example-id="contextual-table">
+                      
+						<table class="table table-striped">
+						  <thead>
+							<tr class="warning">
+							  <th>#</th>
+							  <th>Libelle</th>
+							  <th>Prix Unitaire</th>
+							  <th>Code SYSCOA</th>
+                              <th></th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr ng-repeat="produit in produits">
+							  <th scope="row">1</th>
+							  <td>{{produit.libelle}}</td>
+							  <td>{{produit.prix_unitaire}}</td>
+							  <td>{{produit.code_syscoa}} </td>
+                               <td> <button class="btn btn-warning btn-xs" ng-click="modifierProduit($index)"><i class="icon-pencil icon-white"></i> Modifier</button>
+                                    <button class="btn btn-danger btn-xs" ng-click="supprimerProduit(produit.id_article)"><i class="icon-pencil icon-white"></i> Supprimer</button></td>
+							</tr>
+							
+						  </tbody>
+						</table>
+					   </div>
+					 
+					</div>
+				</div>
+			</div>

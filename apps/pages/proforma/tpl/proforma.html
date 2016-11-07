@@ -1,0 +1,209 @@
+
+
+<div id="page-wrapper" >
+				<div class="graphs">
+					<h3 class="blank1">{{proforma}}  <a href="#ajouterproduit">
+                        <button class="btn btn-success btn-xs pull-right" ng-hide="!onmevoit"><i class="icon-plus-sign icon-white"></i>{{add}}</button>
+                    </a></h3>
+                    
+                    
+                  
+					 <div class="xs tabls" >
+                     
+                     <div class="tab-pane active" id="horizontal-form">
+							<form class="form-horizontal">
+                            
+                                   
+                                <div class="form-group">
+									<label for="disabledinput" class="col-sm-2 control-label">Date</label>
+									<div class="col-sm-8">
+										{{ date | date :  "dd MMMM y" }}
+                                        	<input  type="hidden" class="form-control1" id="focusedinput" placeholder="010101" ng-model="proformaimput.id_article">
+                                        
+									</div>
+								</div> 
+                                
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">Reference</label>
+									<div class="col-sm-8">
+										{{reference}}
+									</div>
+									
+								</div>
+								<div class="form-group">
+									<label for="disabledinput" class="col-sm-2 control-label">Client</label>
+									<div class="col-sm-8">
+										{{designation}}
+									</div>
+								</div>
+            
+                                 <div class="tab-pane active" id="horizontal-form">
+						
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">Libelle</label>
+									<div class="col-sm-8">
+										{{lib_facture}}
+									</div>
+									
+								</div>
+                                
+                               <div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">Montant TTC</label>
+									<div class="col-sm-8">
+										{{montantttc}}
+									</div>
+									
+								</div>
+                                
+                                   
+                               <div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">Reglement</label>
+									<div class="col-sm-8">
+										{{montantttc}}
+									</div>
+									
+								</div>
+                                   
+                               <div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">Solde</label>
+									<div class="col-sm-8">
+										{{montantttc}}
+									</div>
+									
+								</div>
+                                	<form class="form-horizontal">
+								<div class="form-group">
+									<label for="disabledinput" class="col-sm-2 control-label"></label>
+									<div class="col-sm-8">
+										<strong><u>Ajouter une nouvelle Ligne</u></strong>
+									</div>
+								</div>
+								                                      
+                                <div class="form-group">
+									<label for="disabledinput" class="col-sm-2 control-label">Produit/Service</label>
+									<div class="col-sm-8">
+                                    <select name="selector1" id="selector1" class="form-control1" ng-model="tout.id_article">
+                                                    <option ng-repeat="produit in produits"  value="{{ produit.id_article}}">{{produit.libelle}}</option>
+									
+							
+									</select>
+										
+									</div>
+								</div>
+        						 <div class="form-group">
+									<label for="selector1" class="col-sm-2 control-label">Quantité</label>
+									<div class="col-sm-8"><input  type="text" class="form-control1" id="focusedinput" placeholder="010101" ng-model="tout.qte_art"></div>
+								</div>
+                                
+                                <div class="form-group">
+									<label for="selector1" class="col-sm-2 control-label">TVA</label>
+									<div class="col-sm-8"><select name="selector1" id="selector1" class="form-control1" ng-model="tout.pourcentage">
+                                                    <option ng-repeat="tva in tvas"  value="{{ tva.pourcentage }}">{{tva.pourcentage}} %</option>
+									
+							
+									</select></div>
+						  </div>	
+						  <div class="panel-footer">
+							<div class="row">
+								<div class="col-sm-8 col-sm-offset-2">
+									<button class="btn-success btn" ng-click="ajouterLigneProforma(id_proforma)">Enregistrer</button>
+                                    <a href="#proforma"><button class="btn-default btn" ng-click="annulerModifProduit()">Annuler</button></a>
+                                      <button class="btn btn-warning btn-xs" ng-click="modifierProduit($index)"><i class="icon-pencil icon-white"></i> Les Reglements</button>
+
+								</div>
+							</div>
+						 </div>
+						</form>
+					  </div>
+                      
+						<div class="bs-example4" data-example-id="contextual-table">
+                      Ligne de commande
+						<table class="table table-striped">
+						  <thead>
+							<tr class="warning">
+							  <th>Produit/Service</th>
+							  <th>Prix unitaire</th>
+							  <th>Quantité</th>
+                               <th>TVA</th>
+							  <th>Montant</th>
+                              <th></th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr ng-repeat="ligneproforma in listeproformas">
+							 
+							  <td>{{ligneproforma.libelle}}</td>
+							  <td>{{ ligneproforma.prix_unitaire | currency:"FCFA ":0}} </td>
+							  <td>{{ligneproforma.qte_art}} </td>
+                              <td>{{ligneproforma.pourcentage}} </td>
+                              <td>{{((ligneproforma.qte_art*ligneproforma.prix_unitaire) +  (((ligneproforma.qte_art*ligneproforma.prix_unitaire)*ligneproforma.pourcentage)/100)    ) | currency:"FCFA ":0}}       </td>
+                               <td> <button class="btn btn-warning btn-xs" ng-click="modifierProduit($index)"><i class="icon-pencil icon-white"></i> Modifier</button>
+                                    <button class="btn btn-danger btn-xs" ng-click="supprimerLigneproforma(ligneproforma.id_concerne)"><i class="icon-pencil icon-white"></i> Supprimer</button>
+                                  </td>
+							</tr>
+							
+						  </tbody>
+                          
+                           <thead>
+							<tr class="warning"></th>
+							  <th></th>
+							  <th></th>
+                               <th></th>
+							  <th>Montant HT</th>
+                              <th>{{total_ht | currency:"FCFA ":0}} </th>
+                                 <th></th>
+							</tr>
+						  </thead>
+                           <thead>
+							<tr class="warning">
+							  <th></th>
+							  <th></th>
+							  <th></th>
+                               <th>TVA</th>
+							  <th>{{tva | currency:"FCFA ":0}}</th>
+                              <th></th>
+							</tr>
+						  </thead>
+                           <thead>
+							<tr class="warning">
+							  <th></th>
+							  <th></th>
+							  <th></th>
+                               <th>Remise en %</th>
+							  <th><input  type="text" class="form-control1" id="focusedinput"  ng-model="remise" ng-change="RabaisChange(remise)"></th>
+                              <th></th>
+							</tr>
+						  </thead>
+                          <thead>
+							<tr class="warning">
+							  <th></th>
+							  <th></th>
+							  <th></th>
+                               <th>Montant TTC</th>
+							  <th>{{ttc | currency:'F CFA '}}</th>
+                              <th></th>
+							</tr>
+						  </thead>
+                          
+                          
+                          <thead>
+							<tr class="warning">
+							  <th></th>
+							  <th></th>
+							  <th></th>
+                               <th></th>
+							  <th></th>
+                              <th><button class="btn-success btn" ng-click="validerFacture()">Valider</button></th>
+							</tr>
+						  </thead>
+						</table>
+                       
+                     
+                     
+					</div>
+                    
+                    
+                    
+                    
+				</div>
+			</div>
